@@ -6,6 +6,10 @@
 
 A simple way to implement pagination in Golang.
 
+## Install
+```
+go get github.com/vcraescu/go-paginator@master
+```
 ## Usage
 
 ```go
