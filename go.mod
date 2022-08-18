@@ -1,4 +1,4 @@
-module github.com/vcraescu/go-paginator/v2
+module github.com/vcraescu/go-paginator
 
 go 1.15
 

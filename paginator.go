@@ -70,7 +70,7 @@ func (p *paginator) SetPage(page int) {
 }
 
 // Page returns current page
-func (p paginator) Page() (int, error) {
+func (p *paginator) Page() (int, error) {
 	pn, err := p.PageNums()
 	if err != nil {
 		return 0, err
@@ -84,7 +84,7 @@ func (p paginator) Page() (int, error) {
 }
 
 // Results stores the current page results into data argument which must be a pointer to a slice.
-func (p paginator) Results(data interface{}) error {
+func (p *paginator) Results(data interface{}) error {
 	var offset int
 	page, err := p.Page()
 	if err != nil {
@@ -112,7 +112,7 @@ func (p *paginator) Nums() (int64, error) {
 }
 
 // HasPages returns true if there is more than one page
-func (p paginator) HasPages() (bool, error) {
+func (p *paginator) HasPages() (bool, error) {
 	n, err := p.Nums()
 	if err != nil {
 		return false, err
@@ -122,7 +122,7 @@ func (p paginator) HasPages() (bool, error) {
 }
 
 // HasNext returns true if current page is not the last page
-func (p paginator) HasNext() (bool, error) {
+func (p *paginator) HasNext() (bool, error) {
 	pn, err := p.PageNums()
 	if err != nil {
 		return false, err
@@ -137,7 +137,7 @@ func (p paginator) HasNext() (bool, error) {
 }
 
 // PrevPage returns previous page number or ErrNoPrevPage if current page is first page
-func (p paginator) PrevPage() (int, error) {
+func (p *paginator) PrevPage() (int, error) {
 	hp, err := p.HasPrev()
 	if err != nil {
 		return 0, nil
@@ -156,7 +156,7 @@ func (p paginator) PrevPage() (int, error) {
 }
 
 // NextPage returns next page number or ErrNoNextPage if current page is last page
-func (p paginator) NextPage() (int, error) {
+func (p *paginator) NextPage() (int, error) {
 	hn, err := p.HasNext()
 	if err != nil {
 		return 0, err
@@ -175,7 +175,7 @@ func (p paginator) NextPage() (int, error) {
 }
 
 // HasPrev returns true if current page is not the first page
-func (p paginator) HasPrev() (bool, error) {
+func (p *paginator) HasPrev() (bool, error) {
 	page, err := p.Page()
 	if err != nil {
 		return false, err
@@ -185,7 +185,7 @@ func (p paginator) HasPrev() (bool, error) {
 }
 
 // PageNums returns the total number of pages
-func (p paginator) PageNums() (int, error) {
+func (p *paginator) PageNums() (int, error) {
 	n, err := p.Nums()
 	if err != nil {
 		return 0, err
